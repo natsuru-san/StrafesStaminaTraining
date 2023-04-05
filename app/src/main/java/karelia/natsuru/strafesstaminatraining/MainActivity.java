@@ -1,6 +1,8 @@
 package karelia.natsuru.strafesstaminatraining;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button aBtn;
     private Button sBtn;
     private Button dBtn;
+    private ConstraintLayout keyPad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,5 +36,6 @@ public class MainActivity extends AppCompatActivity {
         aBtn = findViewById(R.id.AButton);
         sBtn = findViewById(R.id.SButton);
         dBtn = findViewById(R.id.DButton);
+        keyPad = findViewById(R.id.KeypadLayout);
     }
 }

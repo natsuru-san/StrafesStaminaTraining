@@ -45,19 +45,107 @@
         app:srcCompat="@drawable/menu_buttons"
         tools:ignore="ImageContrastCheck,VisualLintBounds" />
 
-    <ImageView
-        android:id="@+id/Keypad"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/KeypadLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/BackGround"
         app:layout_constraintEnd_toEndOf="@+id/Menu"
         app:layout_constraintStart_toStartOf="@+id/Menu"
-        app:layout_constraintTop_toBottomOf="@+id/Menu"
-        app:srcCompat="@drawable/keypad"
-        tools:ignore="ImageContrastCheck,VisualLintBounds" />
+        app:layout_constraintTop_toBottomOf="@+id/Menu">
+
+        <Button
+            android:id="@+id/SButton"
+            android:layout_width="128dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/tp"
+            android:fontFamily="@font/amiko"
+            android:text="@string/s"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="84dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/WButton"
+            app:layout_constraintStart_toStartOf="@+id/WButton"
+            app:layout_constraintTop_toBottomOf="@+id/space"
+            tools:ignore="SpUsage" />
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/WButton"
+            android:layout_width="128dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/tp"
+            android:fontFamily="@font/amiko"
+            android:text="@string/w"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="84dp"
+            app:layout_constraintBottom_toTopOf="@+id/space"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpUsage" />
+
+        <Button
+            android:id="@+id/DButton"
+            android:layout_width="128dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/tp"
+            android:fontFamily="@font/amiko"
+            android:text="@string/d"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="84dp"
+            app:layout_constraintBottom_toBottomOf="@+id/SButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/SButton"
+            tools:ignore="SpUsage" />
+
+        <ImageView
+            android:id="@+id/KeypadBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/keypad"
+            tools:ignore="ImageContrastCheck,VisualLintBounds" />
+
+        <Button
+            android:id="@+id/AButton"
+            android:layout_width="128dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/tp"
+            android:fontFamily="@font/amiko"
+            android:text="@string/a"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="84dp"
+            app:layout_constraintBottom_toBottomOf="@+id/SButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/SButton"
+            tools:ignore="SpUsage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/Timer"
@@ -113,80 +201,5 @@
         app:layout_constraintTop_toTopOf="@+id/Menu"
         app:srcCompat="@color/tp"
         tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck" />
-
-    <Button
-        android:id="@+id/WButton"
-        android:layout_width="128dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
-        android:background="@color/tp"
-        android:fontFamily="@font/amiko"
-        android:text="@string/w"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="84dp"
-        app:layout_constraintBottom_toTopOf="@+id/space"
-        app:layout_constraintEnd_toEndOf="@+id/Keypad"
-        app:layout_constraintStart_toStartOf="@+id/Keypad"
-        app:layout_constraintTop_toTopOf="@+id/Keypad"
-        tools:ignore="SpUsage" />
-
-    <Button
-        android:id="@+id/SButton"
-        android:layout_width="128dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/tp"
-        android:fontFamily="@font/amiko"
-        android:text="@string/s"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="84dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Keypad"
-        app:layout_constraintEnd_toEndOf="@+id/Keypad"
-        app:layout_constraintStart_toStartOf="@+id/Keypad"
-        app:layout_constraintTop_toBottomOf="@+id/space"
-        tools:ignore="SpUsage" />
-
-    <Button
-        android:id="@+id/AButton"
-        android:layout_width="128dp"
-        android:layout_height="0dp"
-        android:background="@color/tp"
-        android:fontFamily="@font/amiko"
-        android:text="@string/a"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="84dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Keypad"
-        app:layout_constraintEnd_toStartOf="@+id/SButton"
-        app:layout_constraintStart_toStartOf="@+id/Keypad"
-        app:layout_constraintTop_toTopOf="@+id/SButton"
-        tools:ignore="SpUsage" />
-
-    <Button
-        android:id="@+id/DButton"
-        android:layout_width="128dp"
-        android:layout_height="0dp"
-        android:background="@color/tp"
-        android:fontFamily="@font/amiko"
-        android:text="@string/d"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="84dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Keypad"
-        app:layout_constraintEnd_toEndOf="@+id/Keypad"
-        app:layout_constraintStart_toEndOf="@+id/SButton"
-        app:layout_constraintTop_toTopOf="@+id/SButton"
-        tools:ignore="SpUsage" />
-
-    <Space
-        android:id="@+id/space"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/Keypad"
-        app:layout_constraintEnd_toEndOf="@+id/Keypad"
-        app:layout_constraintStart_toStartOf="@+id/Keypad"
-        app:layout_constraintTop_toTopOf="@+id/Keypad" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
