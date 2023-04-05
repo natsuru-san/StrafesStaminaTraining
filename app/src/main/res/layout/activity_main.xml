@@ -148,6 +148,38 @@
         app:layout_constraintTop_toBottomOf="@+id/space"
         tools:ignore="SpUsage" />
 
+    <Button
+        android:id="@+id/AButton"
+        android:layout_width="128dp"
+        android:layout_height="0dp"
+        android:background="@color/tp"
+        android:fontFamily="@font/amiko"
+        android:text="@string/a"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="84dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Keypad"
+        app:layout_constraintEnd_toStartOf="@+id/SButton"
+        app:layout_constraintStart_toStartOf="@+id/Keypad"
+        app:layout_constraintTop_toTopOf="@+id/SButton"
+        tools:ignore="SpUsage" />
+
+    <Button
+        android:id="@+id/DButton"
+        android:layout_width="128dp"
+        android:layout_height="0dp"
+        android:background="@color/tp"
+        android:fontFamily="@font/amiko"
+        android:text="@string/d"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="84dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Keypad"
+        app:layout_constraintEnd_toEndOf="@+id/Keypad"
+        app:layout_constraintStart_toEndOf="@+id/SButton"
+        app:layout_constraintTop_toTopOf="@+id/SButton"
+        tools:ignore="SpUsage" />
+
     <Space
         android:id="@+id/space"
         android:layout_width="wrap_content"
