@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/BackGround"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/Scroll"
+        android:layout_width="56dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/BackGround"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/scroll"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/Menu"
+        android:layout_width="512dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu_buttons"
+        tools:ignore="ImageContrastCheck,VisualLintBounds" />
+
+    <ImageView
+        android:id="@+id/Keypad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Menu"
+        app:layout_constraintStart_toStartOf="@+id/Menu"
+        app:layout_constraintTop_toBottomOf="@+id/Menu"
+        app:srcCompat="@drawable/keypad"
+        tools:ignore="ImageContrastCheck,VisualLintBounds" />
+
+    <TextView
+        android:id="@+id/Timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/amiko_bold"
+        android:text="@string/timer"
+        android:textColor="@color/white"
+        android:textSize="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpUsage,TextContrastCheck,VisualLintOverlap" />
+
+    <ImageButton
+        android:id="@+id/StartButton"
+        android:layout_width="168dp"
+        android:layout_height="0dp"
+        android:background="@color/tp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/Menu"
+        app:layout_constraintStart_toStartOf="@+id/Menu"
+        app:layout_constraintTop_toTopOf="@+id/Menu"
+        app:srcCompat="@color/tp"
+        tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck" />
+
+    <ImageButton
+        android:id="@+id/ScoreButton"
+        android:layout_width="168dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:background="@color/tp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/Menu"
+        app:layout_constraintStart_toEndOf="@+id/StartButton"
+        app:layout_constraintTop_toTopOf="@+id/Menu"
+        app:srcCompat="@color/tp"
+        tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck" />
+
+    <ImageButton
+        android:id="@+id/OptionsButton"
+        android:layout_width="168dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:background="@color/tp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/Menu"
+        app:layout_constraintStart_toEndOf="@+id/ScoreButton"
+        app:layout_constraintTop_toTopOf="@+id/Menu"
+        app:srcCompat="@color/tp"
+        tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/WButton"
+        android:layout_width="128dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/tp"
+        android:fontFamily="@font/amiko"
+        android:text="@string/w"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="84dp"
+        app:layout_constraintBottom_toTopOf="@+id/space"
+        app:layout_constraintEnd_toEndOf="@+id/Keypad"
+        app:layout_constraintStart_toStartOf="@+id/Keypad"
+        app:layout_constraintTop_toTopOf="@+id/Keypad"
+        tools:ignore="SpUsage" />
+
+    <Button
+        android:id="@+id/SButton"
+        android:layout_width="128dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/tp"
+        android:fontFamily="@font/amiko"
+        android:text="@string/s"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="84dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Keypad"
+        app:layout_constraintEnd_toEndOf="@+id/Keypad"
+        app:layout_constraintStart_toStartOf="@+id/Keypad"
+        app:layout_constraintTop_toBottomOf="@+id/space"
+        tools:ignore="SpUsage" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/Keypad"
+        app:layout_constraintEnd_toEndOf="@+id/Keypad"
+        app:layout_constraintStart_toStartOf="@+id/Keypad"
+        app:layout_constraintTop_toTopOf="@+id/Keypad" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
