@@ -3,13 +3,10 @@ package karelia.natsuru.strafesstaminatraining;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import karelia.natsuru.strafesstaminatraining.entity.Score;
-import karelia.natsuru.strafesstaminatraining.repository.DbDao;
-import karelia.natsuru.strafesstaminatraining.repository.DbDaoImpl;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,38 +18,16 @@ public class MainActivity extends AppCompatActivity {
     private Button aBtn;
     private Button sBtn;
     private Button dBtn;
-    private ConstraintLayout keyPad;
+    private ConstraintLayout keyPadLayout;
+    private ConstraintLayout scoreLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        test();
-        init();
         setContentView(R.layout.activity_main);
+        init();
     }
 
-    private void test() {
-        DbDao db = new DbDaoImpl(this);
-        db.insertScore(new Score(-1, 666, 5, 2));
-        db.insertScore(new Score(-1, 777, 1, 22));
-        db.insertScore(new Score(-1, 66, 2, 21));
-        db.insertScore(new Score(-1, 245, 3, 25));
-        db.insertScore(new Score(-1, 74382, 4, 211));
-        db.insertScore(new Score(-1, 23664, 6, 200));
-        db.insertScore(new Score(-1, 883, 7, 20));
-        db.insertScore(new Score(-1, 1223, 8, 12));
-        db.insertScore(new Score(-1, 987, 9, 72));
-        db.insertScore(new Score(-1, 111, 10, 85));
-        db.insertScore(new Score(-1, 888, 11, 99));
-        db.insertScore(new Score(-1, 888, 11, 1234));
-
-        System.out.println(db.getScore(4));
-        System.out.println("\n");
-        System.out.println(db.getAllScores());
-
-        db.setRaceTime(10000);
-        System.out.println(db.getRaceTime());
-    }
 
     private void init() {
         timer = findViewById(R.id.Timer);
@@ -63,6 +38,21 @@ public class MainActivity extends AppCompatActivity {
         aBtn = findViewById(R.id.AButton);
         sBtn = findViewById(R.id.SButton);
         dBtn = findViewById(R.id.DButton);
-        keyPad = findViewById(R.id.KeypadLayout);
+        keyPadLayout = findViewById(R.id.KeypadLayout);
+        scoreLayout = findViewById(R.id.ScoreLayout);
+
+        keyPadLayout.setVisibility(View.VISIBLE);
+        start.setOnClickListener(v -> newGame());
+        score.setOnClickListener(v -> openScores());
+    }
+
+    private void openScores() {
+        scoreLayout.setVisibility(View.VISIBLE);
+        keyPadLayout.setVisibility(View.INVISIBLE);
+    }
+
+    private void newGame() {
+        scoreLayout.setVisibility(View.INVISIBLE);
+        keyPadLayout.setVisibility(View.VISIBLE);
     }
 }

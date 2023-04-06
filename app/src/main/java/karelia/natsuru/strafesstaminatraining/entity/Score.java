@@ -3,6 +3,7 @@
 
 package karelia.natsuru.strafesstaminatraining.entity;
 
+import androidx.annotation.NonNull;
 import java.time.LocalDateTime;
 
 public class Score {
@@ -42,5 +43,14 @@ public class Score {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return numSuccessPress + " | "
+                + numFailPress + " | "
+                + raceInterval + " | "
+                + dateTime;
     }
 }

@@ -21,41 +21,105 @@
 
     <ImageView
         android:id="@+id/Scroll"
-        android:layout_width="56dp"
+        android:layout_width="84dp"
         android:layout_height="0dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
         android:contentDescription="@string/app_name"
+        android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/BackGround"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/scroll"
         tools:ignore="ImageContrastCheck" />
 
-    <ImageView
-        android:id="@+id/Menu"
-        android:layout_width="512dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="24dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/MenuLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:contentDescription="@string/app_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/menu_buttons"
-        tools:ignore="ImageContrastCheck,VisualLintBounds" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/Menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/Menu" />
+
+        <ImageView
+            android:id="@+id/Menu"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/menu_buttons"
+            tools:ignore="ImageContrastCheck,VisualLintBounds" />
+
+        <ImageButton
+            android:id="@+id/OptionsButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/tp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/Menu"
+            app:layout_constraintStart_toEndOf="@+id/ScoreButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/tp"
+            tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/ScoreButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="164dp"
+            android:background="@color/tp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/StartButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/tp"
+            tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/StartButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="84dp"
+            android:background="@color/tp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/space2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/Menu"
+            app:srcCompat="@color/tp"
+            tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ScoreLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="64dp"
         android:layout_marginBottom="8dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Scroll"
-        app:layout_constraintStart_toStartOf="@+id/Menu"
-        app:layout_constraintTop_toBottomOf="@+id/OptionsButton"
+        app:layout_constraintStart_toStartOf="@+id/MenuLayout"
+        app:layout_constraintTop_toBottomOf="@+id/MenuLayout"
         tools:ignore="VisualLintBounds">
 
         <TextView
@@ -77,32 +141,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/KeypadLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/BackGround"
-        app:layout_constraintEnd_toEndOf="@+id/Menu"
-        app:layout_constraintStart_toStartOf="@+id/Menu"
-        app:layout_constraintTop_toBottomOf="@+id/Menu">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/MenuLayout"
+        app:layout_constraintStart_toStartOf="@+id/MenuLayout"
+        app:layout_constraintTop_toBottomOf="@+id/MenuLayout">
 
         <Button
             android:id="@+id/SButton"
-            android:layout_width="128dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:background="@color/tp"
             android:fontFamily="@font/amiko"
             android:text="@string/s"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="84dp"
+            android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/WButton"
             app:layout_constraintStart_toStartOf="@+id/WButton"
             app:layout_constraintTop_toBottomOf="@+id/space"
-            tools:ignore="SpUsage" />
+            tools:ignore="SpUsage,VisualLintOverlap,TextSizeCheck" />
 
         <Space
             android:id="@+id/space"
@@ -115,43 +177,43 @@
 
         <Button
             android:id="@+id/WButton"
-            android:layout_width="128dp"
+            android:layout_width="56dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="8dp"
             android:background="@color/tp"
             android:fontFamily="@font/amiko"
             android:text="@string/w"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="84dp"
+            android:textSize="24dp"
             app:layout_constraintBottom_toTopOf="@+id/space"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpUsage" />
+            tools:ignore="SpUsage,TextSizeCheck" />
 
         <Button
             android:id="@+id/DButton"
-            android:layout_width="128dp"
+            android:layout_width="56dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="12dp"
             android:background="@color/tp"
             android:fontFamily="@font/amiko"
             android:text="@string/d"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="84dp"
+            android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="@+id/SButton"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/SButton"
             app:layout_constraintTop_toTopOf="@+id/SButton"
-            tools:ignore="SpUsage" />
+            tools:ignore="SpUsage,TextContrastCheck,TouchTargetSizeCheck,TextSizeCheck" />
 
         <ImageView
             android:id="@+id/KeypadBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,19 +223,19 @@
 
         <Button
             android:id="@+id/AButton"
-            android:layout_width="128dp"
+            android:layout_width="56dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginEnd="12dp"
             android:background="@color/tp"
             android:fontFamily="@font/amiko"
             android:text="@string/a"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="84dp"
+            android:textSize="24dp"
             app:layout_constraintBottom_toBottomOf="@+id/SButton"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/SButton"
             app:layout_constraintTop_toTopOf="@+id/SButton"
-            tools:ignore="SpUsage" />
+            tools:ignore="SpUsage,TextContrastCheck,TouchTargetSizeCheck,TextSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -189,46 +251,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpUsage,TextContrastCheck,VisualLintOverlap" />
-
-    <ImageButton
-        android:id="@+id/StartButton"
-        android:layout_width="168dp"
-        android:layout_height="0dp"
-        android:background="@color/tp"
-        android:contentDescription="@string/app_name"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/Menu"
-        app:layout_constraintStart_toStartOf="@+id/Menu"
-        app:layout_constraintTop_toTopOf="@+id/Menu"
-        app:srcCompat="@color/tp"
-        tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck" />
-
-    <ImageButton
-        android:id="@+id/ScoreButton"
-        android:layout_width="168dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:background="@color/tp"
-        android:contentDescription="@string/app_name"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/Menu"
-        app:layout_constraintStart_toEndOf="@+id/StartButton"
-        app:layout_constraintTop_toTopOf="@+id/Menu"
-        app:srcCompat="@color/tp"
-        tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck" />
-
-    <ImageButton
-        android:id="@+id/OptionsButton"
-        android:layout_width="168dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:background="@color/tp"
-        android:contentDescription="@string/app_name"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/Menu"
-        app:layout_constraintStart_toEndOf="@+id/ScoreButton"
-        app:layout_constraintTop_toTopOf="@+id/Menu"
-        app:srcCompat="@color/tp"
-        tools:ignore="ImageContrastCheck,VisualLintBounds,DuplicateSpeakableTextCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
