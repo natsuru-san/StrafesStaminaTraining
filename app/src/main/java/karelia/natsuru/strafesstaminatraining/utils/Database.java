@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper {
 
-    public static final String scoreName = "score";
+    public static final String scoreName = "scores";
     public static final String settingsName = "settings";
     private static final String dbName = "app";
     private static final String scoreTable = "CREATE TABLE " + scoreName + "(_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, raceInterval INTEGER, numFailPress INTEGER, numSuccessPress INTEGER, dateTime TEXT);";
@@ -25,11 +25,9 @@ public class Database extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        try (db) {
-            db.execSQL(settingsTable);
-            db.execSQL("INSERT INTO settings(_id, param, description) VALUES(1, 60000, 'raceInterval');");
-            db.execSQL(scoreTable);
-        }
+        db.execSQL(settingsTable);
+        db.execSQL("INSERT INTO settings(_id, param, description) VALUES(1, 60000, 'raceInterval');");
+        db.execSQL(scoreTable);
     }
 
     @Override

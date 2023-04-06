@@ -25,10 +25,11 @@ public class DbDaoImpl implements DbDao {
     public void insertScore(Score score) {
         List<Score> scores = getAllScores();
         Score minScore = null;
-        if (scores.size() >= maxScores) {
+        if (scores != null && scores.size() >= maxScores) {
             minScore = scores.stream().min(Comparator.comparingInt(Score::getNumSuccessPress)).get();
         }
         try (Database db = new Database(context)) {
+            String query;
             if (minScore != null) {
                 long minId = minScore.getId();
                 String delete = "DELETE FROM "
@@ -36,15 +37,27 @@ public class DbDaoImpl implements DbDao {
                         + " WHERE _id="
                         + minId + ";";
                 db.getWritableDatabase().execSQL(delete);
+                LocalDateTime dateTime = score.getDateTime();
                 score = new Score(minId, score.getRaceInterval(), score.getNumFailPress(), score.getNumSuccessPress());
+                score.setDateTime(dateTime);
+                query = "INSERT INTO "
+                        + Database.scoreName
+                        + " VALUES("
+                        + minId + ", "
+                        + score.getRaceInterval() + ", "
+                        + score.getNumFailPress() + ", "
+                        + score.getNumSuccessPress() + ", '"
+                        + score.getDateTime() + "');";
+            } else {
+                query = "INSERT INTO "
+                        + Database.scoreName
+                        + "(raceInterval, numFailPress, numSuccessPress, dateTime)"
+                        + " VALUES("
+                        + score.getRaceInterval() + ", "
+                        + score.getNumFailPress() + ", "
+                        + score.getNumSuccessPress() + ", '"
+                        + score.getDateTime() + "');";
             }
-            String query = "INSERT INTO "
-                    + Database.scoreName
-                    + " VALUES(" + score.getId() + ", "
-                    + score.getRaceInterval() + ", "
-                    + score.getNumFailPress() + ", "
-                    + score.getNumSuccessPress() + ", "
-                    + score.getDateTime() + ");";
             db.getWritableDatabase().execSQL(query);
         }
     }
@@ -74,7 +87,7 @@ public class DbDaoImpl implements DbDao {
                     + Database.scoreName + ";";
             Cursor cursor = db.getReadableDatabase().rawQuery(query, null);
             if (cursor.getCount() == 0) return null;
-            scores = new ArrayList<>(15);
+            scores = new ArrayList<>(16);
             while (cursor.moveToNext()) {
                 Score score = new Score(cursor.getLong(0), cursor.getLong(1), cursor.getInt(2), cursor.getInt(3));
                 score.setDateTime(LocalDateTime.parse(cursor.getString(4)));
