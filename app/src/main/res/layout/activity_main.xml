@@ -127,6 +127,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fontFamily="@font/amiko"
+            android:singleLine="false"
             android:text="@string/app_name"
             android:textAlignment="textStart"
             android:textColor="@color/white"
@@ -148,6 +149,15 @@
         app:layout_constraintEnd_toEndOf="@+id/MenuLayout"
         app:layout_constraintStart_toStartOf="@+id/MenuLayout"
         app:layout_constraintTop_toBottomOf="@+id/MenuLayout">
+
+        <Button
+            android:id="@+id/StartBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="@string/start"
+            app:layout_constraintEnd_toEndOf="@+id/KeypadBackground"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/SButton"
@@ -236,20 +246,21 @@
             app:layout_constraintEnd_toStartOf="@+id/SButton"
             app:layout_constraintTop_toTopOf="@+id/SButton"
             tools:ignore="SpUsage,TextContrastCheck,TouchTargetSizeCheck,TextSizeCheck" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/Timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="96dp"
         android:fontFamily="@font/amiko_bold"
         android:text="@string/timer"
         android:textColor="@color/white"
-        android:textSize="48dp"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpUsage,TextContrastCheck,VisualLintOverlap" />
+        tools:ignore="SpUsage,TextContrastCheck,VisualLintOverlap,TextSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
