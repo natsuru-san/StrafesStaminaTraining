@@ -63,23 +63,6 @@ public class DbDaoImpl implements DbDao {
     }
 
     @Override
-    public Score getScore(long id) {
-        Score score;
-        try (Database db = new Database(context)) {
-            String query = "SELECT * FROM "
-                    + Database.scoreName
-                    + " WHERE _id="
-                    + id + ";";
-            Cursor cursor = db.getReadableDatabase().rawQuery(query, null);
-            cursor.moveToFirst();
-            score = new Score(cursor.getLong(0), cursor.getLong(1), cursor.getInt(2), cursor.getInt(3));
-            score.setDateTime(LocalDateTime.parse(cursor.getString(4)));
-            cursor.close();
-        }
-        return score;
-    }
-
-    @Override
     public List<Score> getAllScores() {
         List<Score> scores;
         try (Database db = new Database(context)) {

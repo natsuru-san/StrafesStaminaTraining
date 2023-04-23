@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.List;
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private Thread timer;
     private Game game;
     private DbDao db;
+    private EditText roundValueInput;
+    @SuppressWarnings("FieldCanBeLocal")
+    private Button apply;
     public long initTime;
     public long roundTime;
 
@@ -105,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateTimer() {
         long endTime = System.currentTimeMillis();
         long period = endTime - initTime;
-        timerView.setText(((double) period / 1000) + "sec");
+        timerView.setText(((double) period / 1000) + "/" + ((double) roundTime / 1000));
         if (period >= roundTime) {
             timer.interrupt();
             stopRound();
@@ -121,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
         aBtn = findViewById(R.id.AButton);
         sBtn = findViewById(R.id.SButton);
         dBtn = findViewById(R.id.DButton);
+        scoreView = findViewById(R.id.ScoreView);
+        roundValueInput = findViewById(R.id.RoundValueInput);
+        apply = findViewById(R.id.ApplyBtn);
 
         wBtn.setClickable(false);
         aBtn.setClickable(false);
@@ -137,9 +144,20 @@ public class MainActivity extends AppCompatActivity {
         score.setOnClickListener(v -> openScores());
         options.setOnClickListener(v -> openOptions());
         startBtn.setOnClickListener(v -> startTimer());
+        apply.setOnClickListener(v -> saveRoundTime());
 
         timerView.setText(getString(R.string.timer_value));
-        scoreView = findViewById(R.id.ScoreView);
+    }
+
+    private void saveRoundTime() {
+        String result = roundValueInput.getEditableText().toString();
+        long millis = Long.parseLong(result);
+        if (millis > 0) {
+            roundTime = millis;
+            db.setRaceTime(millis);
+        } else {
+            throw new RuntimeException("WRONG VALUE!!!");
+        }
     }
 
     @SuppressLint("SetTextI18n")

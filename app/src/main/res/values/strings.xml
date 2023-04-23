@@ -8,4 +8,6 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="timer_value">0</string>
+    <string name="round_value">60000</string>
+    <string name="apply">Apply</string>
 </resources>

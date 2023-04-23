@@ -8,7 +8,6 @@ import karelia.natsuru.strafesstaminatraining.entity.Score;
 
 public interface DbDao {
     void insertScore(Score score);
-    Score getScore(long id);
     List<Score> getAllScores();
     long getRaceTime();
     void setRaceTime(long raceTime);
