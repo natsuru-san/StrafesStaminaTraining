@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Game game;
     private DbDao db;
     public long initTime;
-    public long roundTime = 60_000L;
+    public long roundTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createHandler();
         db = new DbDaoImpl(this);
+        roundTime = db.getRaceTime();
         init();
     }
 
