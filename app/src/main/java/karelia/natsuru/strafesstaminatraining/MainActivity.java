@@ -12,9 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import java.util.List;
-
 import karelia.natsuru.strafesstaminatraining.entity.Score;
 import karelia.natsuru.strafesstaminatraining.repository.DbDao;
 import karelia.natsuru.strafesstaminatraining.repository.DbDaoImpl;
@@ -33,12 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private Button startBtn;
     private ConstraintLayout keyPadLayout;
     private ConstraintLayout scoreLayout;
+    private ConstraintLayout optionsLayout;
     private Handler handler;
     private Thread timer;
     private Game game;
     private DbDao db;
     public long initTime;
-    public static final long roundTime = 60_000L;
+    public long roundTime = 60_000L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +90,21 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    private void openOptions() {
+        scoreLayout.setVisibility(View.INVISIBLE);
+        keyPadLayout.setVisibility(View.INVISIBLE);
+        optionsLayout.setVisibility(View.VISIBLE);
+    }
+
+    public long getRoundTime() {
+        return roundTime;
+    }
+
+    @SuppressLint("SetTextI18n")
     private void updateTimer() {
         long endTime = System.currentTimeMillis();
         long period = endTime - initTime;
-        timerView.setText(String.valueOf(period));
+        timerView.setText(((double) period / 1000) + "sec");
         if (period >= roundTime) {
             timer.interrupt();
             stopRound();
@@ -119,10 +129,12 @@ public class MainActivity extends AppCompatActivity {
         startBtn = findViewById(R.id.StartBtn);
         keyPadLayout = findViewById(R.id.KeypadLayout);
         scoreLayout = findViewById(R.id.ScoreLayout);
+        optionsLayout = findViewById(R.id.OptionsLayout);
 
         keyPadLayout.setVisibility(View.VISIBLE);
         start.setOnClickListener(v -> newGame());
         score.setOnClickListener(v -> openScores());
+        options.setOnClickListener(v -> openOptions());
         startBtn.setOnClickListener(v -> startTimer());
 
         timerView.setText(getString(R.string.timer_value));
@@ -133,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
     private void openScores() {
         scoreLayout.setVisibility(View.VISIBLE);
         keyPadLayout.setVisibility(View.INVISIBLE);
+        optionsLayout.setVisibility(View.INVISIBLE);
         List<Score> scores = db.getAllScores();
         StringBuilder allScores = new StringBuilder();
         for (Score s : scores) {
@@ -144,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
     private void newGame() {
         scoreLayout.setVisibility(View.INVISIBLE);
         keyPadLayout.setVisibility(View.VISIBLE);
+        optionsLayout.setVisibility(View.INVISIBLE);
     }
 
     private void stopTimer() {

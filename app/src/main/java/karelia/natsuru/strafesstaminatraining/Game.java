@@ -12,20 +12,27 @@ public class Game {
 
     private final Random random;
     private final Timer timer;
-    private static final long period = 1500L;
-    private static final long delay = 1500L;
+    private final MainActivity main;
+    private static final long defaultPeriod = 500L;
+    private static final long defaultDelay = 500L;
     private int value;
+    private int prevValue;
     private int numFailPress = 0;
     private int numSuccessPress = 0;
 
     public Game(MainActivity main) {
+        this(main, defaultPeriod, defaultDelay);
+    }
+
+    public Game(MainActivity main, long period, long delay) {
+        this.main = main;
         this.random = new Random();
         this.timer = new Timer();
         this.timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 value = random.nextInt(9);
-                while ((value % 2) == 0) {
+                while (((value % 2) == 0) | (prevValue == value)) {
                     value = random.nextInt(9);
                 }
                 main.send(2);
@@ -33,6 +40,7 @@ public class Game {
                 main.send(6);
                 main.send(8);
                 main.send(value);
+                prevValue = value;
             }
         }, delay, period);
     }
@@ -51,6 +59,6 @@ public class Game {
     }
 
     public Score getScore() {
-        return new Score(-1L, MainActivity.roundTime, numFailPress, numSuccessPress);
+        return new Score(-1L, main.getRoundTime(), numFailPress, numSuccessPress);
     }
 }

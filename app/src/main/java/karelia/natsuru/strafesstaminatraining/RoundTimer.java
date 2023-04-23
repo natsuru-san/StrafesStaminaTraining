@@ -19,9 +19,8 @@ public class RoundTimer extends Thread implements Runnable {
         while (ran) {
             main.send(-1);
             try {
-                sleep(100L);
-            } catch (InterruptedException ignored) {
-            }
+                sleep(10L);
+            } catch (InterruptedException ignored) {}
         }
         main.send(-2);
     }
